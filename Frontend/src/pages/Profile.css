@@ -1,0 +1,109 @@
+/* Main Container */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 80vh; /* Screen ke center mein rakhne ke liye */
+}
+
+/* Profile Card */
+.profile-card {
+    width: 100%;
+    max-width: 420px; /* Desktop par maximum width fix rahegi */
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid #e2e8f0;
+}
+
+/* Avatar Styling */
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: #2563eb;
+    color: white;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.profile-card h2 {
+    margin: 10px 0 5px;
+    font-size: 22px;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.profile-card p {
+    color: #64748b;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Profile Details Wrapper */
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Individual Item Box */
+.profile-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafc;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    border: 1px solid #f1f5f9;
+    box-sizing: border-box;
+    word-break: break-all; /* Agar lamba email ho toh break hone se rokne ke liye */
+}
+
+.profile-item svg {
+    color: #2563eb;
+    font-size: 18px;
+    flex-shrink: 0; /* Icon ka size chota na ho */
+}
+
+.profile-item span {
+    color: #334155;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* --- MEDIA QUERIES FOR LARGER SCREENS --- */
+@media (min-width: 768px) {
+    .profile-container {
+        padding: 40px;
+    }
+    .profile-card {
+        padding: 30px;
+    }
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+    }
+    .profile-card h2 {
+        font-size: 26px;
+    }
+    .profile-item {
+        padding: 14px;
+        font-size: 15px;
+    }
+    .profile-item svg {
+        font-size: 20px;
+    }
+}

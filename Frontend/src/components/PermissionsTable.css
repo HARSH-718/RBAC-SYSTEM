@@ -1,0 +1,143 @@
+/* Main Container - Prevent overflow */
+.permission-container {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin: 10px;
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box; /* Padding ki wajah se bahar jaane se rokega */
+    overflow: hidden;
+}
+
+/* Header Styling */
+.permission-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.permission-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.permission-header select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    outline: none;
+    background-color: #f8fafc;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* IMPORTANT: Table Responsive Wrapper for Scroll */
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Mobile par side scroll lane ke liye */
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 5px;
+}
+
+.permission-container table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    white-space: nowrap; /* Text break hone se rolega */
+}
+
+.permission-container th,
+.permission-container td {
+    padding: 10px 12px;
+    text-align: center;
+    border-bottom: 1px solid #f1f5f9;
+    border-right: 1px solid #f1f5f9;
+    font-size: 12px;
+}
+
+.permission-container th:last-child,
+.permission-container td:last-child {
+    border-right: none;
+}
+
+/* Module Column */
+.permission-container th:first-child,
+.permission-container td:first-child {
+    font-weight: 600;
+    text-align: left;
+    padding-left: 12px;
+}
+
+.permission-container th {
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.permission-container td {
+    color: #475569;
+}
+
+/* Checkbox */
+.permission-container input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #2563eb;
+    margin: 0;
+}
+
+/* Save Button */
+.save-permission-btn {
+    margin-top: 16px;
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.save-permission-btn:hover {
+    background: #1d4ed8;
+}
+
+/* Desktop screen adjustments */
+@media (min-width: 768px) {
+    .permission-container {
+        padding: 24px;
+        margin: 20px;
+        max-width: calc(100% - 40px);
+    }
+    .permission-header h2 {
+        font-size: 24px;
+    }
+    .permission-container th, 
+    .permission-container td {
+        padding: 16px;
+        font-size: 14px;
+    }
+    .permission-container th {
+        font-size: 14px;
+    }
+    .save-permission-btn {
+        width: auto;
+        padding: 12px 28px;
+    }
+}

@@ -1,0 +1,89 @@
+/* Main Quick Actions Container */
+.quick-actions {
+    background: #ffffff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Quick Actions Header */
+.quick-actions h3 {
+    margin: 0 0 16px 0;
+    font-size: 20px;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+/* Action Buttons Grid Layout */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Individual Action Button */
+.action-buttons button {
+    flex: 1;
+    min-width: 100%; /* Mobile screens par buttons full width ho jayenge */
+    border: none;
+    border-radius: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.5s ease;
+    box-sizing: border-box;
+}
+
+.action-buttons button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+    background: #2253db;
+}
+
+.action-buttons svg {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+/* --- MEDIA QUERIES FOR LARGER SCREENS --- */
+@media (min-width: 576px) {
+    .action-buttons button {
+        min-width: calc(50% - 10px); /* Tablet screens par 2 buttons per row */
+    }
+}
+
+@media (min-width: 768px) {
+    .quick-actions {
+        padding: 24px;
+        margin: 24px 0;
+    }
+    .quick-actions h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    .action-buttons {
+        gap: 20px;
+    }
+    .action-buttons button {
+        flex: 1;
+        min-width: 200px; /* Desktop par original behavior restore ho jayega */
+        padding: 18px;
+        border-radius: 12px;
+        font-size: 16px;
+    }
+    .action-buttons svg {
+        font-size: 22px;
+    }
+}
