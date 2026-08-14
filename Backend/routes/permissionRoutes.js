@@ -9,32 +9,45 @@ const {
 } = require("../controllers/permissionController");
 
 const verifyToken = require("../middleware/authMiddleware");
-const authorizeRoles = require("../middleware/roleMiddleware");
+const authorizePermission = require("../middleware/permissionMiddleware");
 
+// ===============================
+// VIEW PERMISSIONS
+// ===============================
 router.get(
   "/",
   verifyToken,
-  authorizeRoles("super_admin", "admin"),
+  authorizePermission("permissions"),
   getPermissions
 );
 
+// ===============================
+// CREATE PERMISSION
+// ===============================
 router.post(
   "/",
   verifyToken,
-  authorizeRoles("super_admin"),
+  authorizePermission("create_permission"),
   createPermission
 );
+
+// ===============================
+// UPDATE PERMISSION
+// ===============================
 router.put(
   "/:id",
   verifyToken,
-  authorizeRoles("super_admin"),
+  authorizePermission("edit_permission"),
   updatePermission
 );
 
+// ===============================
+// DELETE PERMISSION
+// ===============================
 router.delete(
   "/:id",
   verifyToken,
-  authorizeRoles("super_admin"),
+  authorizePermission("delete_permission"),
   deletePermission
 );
 

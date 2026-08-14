@@ -12,7 +12,7 @@ const {
 const verifyToken = require("../middleware/authMiddleware");
 const authorizeRoles = require("../middleware/roleMiddleware");
 
-// Get All Roles
+// View Roles
 router.get(
   "/",
   verifyToken,
@@ -28,7 +28,7 @@ router.post(
   createRole
 );
 
-// Update Role
+// Edit Role
 router.put(
   "/:id",
   verifyToken,
@@ -44,7 +44,7 @@ router.delete(
   deleteRole
 );
 
-// Assign Permissions to Role
+// Assign Permissions
 router.put(
   "/:id/permissions",
   verifyToken,

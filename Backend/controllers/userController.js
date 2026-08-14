@@ -27,6 +27,21 @@ const createUser = async (req, res) => {
       });
     }
 
+    // Generate User Code
+    const lastUser = await User.findOne().sort({ createdAt: -1 });
+
+    let nextNumber = 1001;
+
+    if (lastUser?.userCode) {
+      const lastNumber = parseInt(
+        lastUser.userCode.replace("USR-", "")
+      );
+
+      nextNumber = lastNumber + 1;
+    }
+
+    const userCode = `USR-${nextNumber}`;
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
@@ -35,6 +50,7 @@ const createUser = async (req, res) => {
       password: hashedPassword,
       role,
       status,
+      userCode,
     });
 
     res.status(201).json({

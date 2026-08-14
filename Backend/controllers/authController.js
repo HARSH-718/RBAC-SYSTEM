@@ -106,7 +106,43 @@ const login = async (req, res) => {
     });
   }
 };
+const getMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id)
+      .populate({
+        path: "role",
+        populate: {
+          path: "permissions",
+        },
+      });
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    res.status(200).json({
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role.name,
+        permissions: user.role.permissions,
+        status: user.status,
+      },
+    });
+  } catch (error) {
+    console.log("Get Me Error:", error);
+
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   register,
   login,
+  getMe,
 };

@@ -1,6 +1,9 @@
 const Permission = require("../models/Permission");
 
-// Get All Permissions
+// ========================================
+// GET ALL PERMISSIONS
+// ========================================
+
 const getPermissions = async (req, res) => {
   try {
     const permissions = await Permission.find();
@@ -12,6 +15,10 @@ const getPermissions = async (req, res) => {
     });
   }
 };
+
+// ========================================
+// CREATE PERMISSION
+// ========================================
 
 const createPermission = async (req, res) => {
   try {
@@ -27,7 +34,6 @@ const createPermission = async (req, res) => {
       });
     }
 
-    // Single permission
     const { name, description } = req.body;
 
     const exists = await Permission.findOne({ name });
@@ -53,7 +59,11 @@ const createPermission = async (req, res) => {
     });
   }
 };
-// Update Permission
+
+// ========================================
+// UPDATE PERMISSION
+// ========================================
+
 const updatePermission = async (req, res) => {
   try {
     const { id } = req.params;
@@ -61,8 +71,13 @@ const updatePermission = async (req, res) => {
 
     const permission = await Permission.findByIdAndUpdate(
       id,
-      { name, description },
-      { new: true }
+      {
+        name,
+        description,
+      },
+      {
+        new: true,
+      }
     );
 
     if (!permission) {
@@ -82,7 +97,10 @@ const updatePermission = async (req, res) => {
   }
 };
 
-// Delete Permission
+// ========================================
+// DELETE PERMISSION
+// ========================================
+
 const deletePermission = async (req, res) => {
   try {
     const { id } = req.params;
