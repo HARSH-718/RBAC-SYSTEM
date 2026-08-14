@@ -8,19 +8,18 @@ import Permissions from "../pages/Permissions";
 import Unauthorized from "../pages/Unauthorized";
 import NotFound from "../pages/NotFound";
 import Profile from "../pages/Profile";
+
 import Layout from "../components/Layout";
 import ProtectedRoute from "../components/ProtectedRoute";
 import RoleProtectedRoute from "../components/RoleProtectedRoute";
 
-
 function AppRoutes() {
   return (
     <Routes>
-
       {/* Login */}
       <Route path="/" element={<Login />} />
 
-      {/* Protected Layout */}
+      {/* Protected Routes */}
       <Route
         element={
           <ProtectedRoute>
@@ -28,57 +27,83 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       >
-
+        {/* Dashboard
+            Super Admin + Admin + User */}
         <Route
           path="/dashboard"
           element={
-            <RoleProtectedRoute permission="dashboard">
+            <RoleProtectedRoute
+              allowedRoles={["super_admin", "admin", "user"]}
+            >
               <Dashboard />
             </RoleProtectedRoute>
           }
         />
 
+        {/* Users
+            Super Admin + Admin */}
         <Route
           path="/users"
           element={
-            <RoleProtectedRoute permission="users">
+            <RoleProtectedRoute
+              allowedRoles={["super_admin", "admin"]}
+            >
               <Users />
             </RoleProtectedRoute>
           }
         />
 
+        {/* Roles
+            Super Admin + Admin */}
         <Route
           path="/roles"
           element={
-            <RoleProtectedRoute permission="roles">
+            <RoleProtectedRoute
+              allowedRoles={["super_admin", "admin"]}
+            >
               <Roles />
             </RoleProtectedRoute>
           }
         />
 
+        {/* Permissions
+            Only Super Admin */}
         <Route
           path="/permissions"
           element={
-            <RoleProtectedRoute permission="permissions">
+            <RoleProtectedRoute
+              allowedRoles={["super_admin"]}
+            >
               <Permissions />
             </RoleProtectedRoute>
           }
         />
-        <Route
-  path="/profile"
-  element={
-    <ProtectedRoute permission="dashboard">
-      <Profile />
-    </ProtectedRoute>
-  }
-/>
 
+        {/* Profile
+            All logged-in users */}
+        <Route
+          path="/profile"
+          element={
+            <RoleProtectedRoute
+              allowedRoles={["super_admin", "admin", "user"]}
+            >
+              <Profile />
+            </RoleProtectedRoute>
+          }
+        />
       </Route>
 
-      <Route path="/unauthorized" element={<Unauthorized />} />
+      {/* Unauthorized */}
+      <Route
+        path="/unauthorized"
+        element={<Unauthorized />}
+      />
 
-      <Route path="*" element={<NotFound />} />
-
+      {/* Not Found */}
+      <Route
+        path="*"
+        element={<NotFound />}
+      />
     </Routes>
   );
 }

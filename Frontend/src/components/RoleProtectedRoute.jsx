@@ -1,22 +1,20 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import roles from "../data/roles";
 
-function RoleProtectedRoute({ permission, children }) {
+function RoleProtectedRoute({ allowedRoles, children }) {
   const { user } = useAuth();
 
+  // Login nahi hai
   if (!user) {
     return <Navigate to="/" replace />;
   }
 
-  const role = user.role.toLowerCase().replace(/\s+/g, "_");
-
-  const hasAccess = roles[role]?.includes(permission);
-
-  if (!hasAccess) {
+  // User ka role allowed nahi hai
+  if (!allowedRoles.includes(user.role)) {
     return <Navigate to="/unauthorized" replace />;
   }
 
+  // Access allowed
   return children;
 }
 
